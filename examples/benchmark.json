@@ -1,0 +1,143 @@
+{
+  "system": "ModalForge",
+  "author": "晨星",
+  "config": {
+    "seed": 20261002,
+    "n_train": 480,
+    "n_test": 120,
+    "image_size": 32,
+    "shape_vocab": [
+      "circle",
+      "square",
+      "triangle"
+    ],
+    "color_vocab": [
+      "red",
+      "green",
+      "blue",
+      "yellow"
+    ],
+    "count_vocab": [
+      1,
+      2,
+      3
+    ],
+    "hog_cells": 4,
+    "hog_bins": 9,
+    "hog_block_norm": true,
+    "tfidf_max_features": 64,
+    "cca_dims": 16,
+    "contrastive_dim": 24,
+    "contrastive_lr": 0.05,
+    "contrastive_epochs": 60,
+    "contrastive_temperature": 0.2,
+    "clip_name": "openai/clip-vit-base-patch32",
+    "recall_ks": [
+      1,
+      5,
+      10
+    ],
+    "fusion_min_conf": 0.35,
+    "fusion_topk": 10
+  },
+  "aligners_used": [
+    "numpy_cca",
+    "sklearn_cca",
+    "sklearn_pls",
+    "numpy_contrastive"
+  ],
+  "random_floor_note": "random_baseline row is the expected random retrieval ceiling",
+  "results": [
+    {
+      "aligner": "numpy_cca",
+      "available": true,
+      "recall@1_img2txt": 0.3,
+      "recall@5_img2txt": 0.9833,
+      "map_img2txt": 0.5565,
+      "mrr_img2txt": 0.5565,
+      "recall@1_txt2img": 0.3,
+      "recall@5_txt2img": 0.9167,
+      "map_txt2img": 0.5353,
+      "mrr_txt2img": 0.5353,
+      "notes": "ok"
+    },
+    {
+      "aligner": "sklearn_cca",
+      "available": true,
+      "recall@1_img2txt": 0.2,
+      "recall@5_img2txt": 0.75,
+      "map_img2txt": 0.4163,
+      "mrr_img2txt": 0.4163,
+      "recall@1_txt2img": 0.1833,
+      "recall@5_txt2img": 0.5917,
+      "map_txt2img": 0.3501,
+      "mrr_txt2img": 0.3501,
+      "notes": "ok"
+    },
+    {
+      "aligner": "sklearn_pls",
+      "available": true,
+      "recall@1_img2txt": 0.275,
+      "recall@5_img2txt": 0.9417,
+      "map_img2txt": 0.5274,
+      "mrr_img2txt": 0.5274,
+      "recall@1_txt2img": 0.2917,
+      "recall@5_txt2img": 0.9667,
+      "map_txt2img": 0.5433,
+      "mrr_txt2img": 0.5433,
+      "notes": "ok"
+    },
+    {
+      "aligner": "numpy_contrastive",
+      "available": true,
+      "recall@1_img2txt": 0.0083,
+      "recall@5_img2txt": 0.0917,
+      "map_img2txt": 0.0414,
+      "mrr_img2txt": 0.0414,
+      "recall@1_txt2img": 0.0667,
+      "recall@5_txt2img": 0.2833,
+      "map_txt2img": 0.1617,
+      "mrr_txt2img": 0.1617,
+      "notes": "ok"
+    },
+    {
+      "aligner": "clip",
+      "available": false,
+      "recall@1_img2txt": 0,
+      "recall@5_img2txt": 0,
+      "map_img2txt": 0,
+      "mrr_img2txt": 0,
+      "recall@1_txt2img": 0,
+      "recall@5_txt2img": 0,
+      "map_txt2img": 0,
+      "mrr_txt2img": 0,
+      "notes": "backend unavailable (offline / missing deps)"
+    },
+    {
+      "aligner": "random_baseline",
+      "available": true,
+      "recall@1_img2txt": 0.0083,
+      "recall@5_img2txt": 0.025,
+      "map_img2txt": 0.0163,
+      "mrr_img2txt": 0.0163,
+      "recall@1_txt2img": 0.0083,
+      "recall@5_txt2img": 0.025,
+      "map_txt2img": 0.0163,
+      "mrr_txt2img": 0.0163,
+      "notes": "expected random retrieval ceiling"
+    },
+    {
+      "aligner": "mmfuse",
+      "available": true,
+      "recall@1_img2txt": 0.3,
+      "recall@5_img2txt": 0.9583,
+      "map_img2txt": 0.5493,
+      "mrr_img2txt": 0.5493,
+      "recall@1_txt2img": 0.2917,
+      "recall@5_txt2img": 0.9583,
+      "map_txt2img": 0.5356,
+      "mrr_txt2img": 0.5356,
+      "notes": "confidence-gated fusion of numpy_cca, sklearn_cca, sklearn_pls, numpy_contrastive"
+    }
+  ]
+}

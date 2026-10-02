@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modalforge"
+version = "1.0.0"
+description = "Multimodal cross-modal retrieval: CCA/PLS + contrastive alignment with a confidence-gated MMFuse fusion. Author: 晨星"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.9",
+    "scikit-learn>=1.3",
+    "pillow>=9.0",
+]
+
+[project.optional-dependencies]
+clip = ["transformers>=4.30", "torch>=2.0"]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["modalforge*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+addopts = "-q -W ignore::UserWarning"
+
+[tool.ruff]
+line-length = 96
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]

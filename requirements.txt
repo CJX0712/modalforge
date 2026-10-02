@@ -1,0 +1,7 @@
+# ModalForge runtime + test dependencies (pinned to verified versions).
+# Version pinning is part of correctness: these combinations are tested green.
+numpy==2.5.3
+scipy==1.18.1
+scikit-learn==1.9.1
+pillow==12.3.0
+pytest==9.1.1
